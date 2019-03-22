@@ -26,7 +26,7 @@ export default function BasicExample() {
         <hr />
 
         <Route exact path="/" component={Home} />
-        <Route path="/hep" component={Help} />
+        <Route path="/help" component={Help} />
         <Route path="/about" component={About} />
       </div>
     </Router>

@@ -31,7 +31,7 @@ module.exports = {
         use: {
           loader: 'url-loader',
           options: {
-            limit: 1024 * 20,
+            limit: 1024 * 5,
             name: 'media/[name].[hash:6].[ext]'
           }
         }
