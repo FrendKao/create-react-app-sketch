@@ -64,7 +64,7 @@ module.exports = {
     open: 'Google Chrome',
     hot: true,
     proxy: {
-      '/api': 'http://localhost:3000'
+      '/api': 'http://localhost:8809'
     }
   },
 };

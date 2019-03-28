@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "copy": "rm -rf ./sm-server/sources/** && cp ./dist/js/*.js.map ./sm-server/sources",
     "start": "webpack-dev-server --progress --color --devtool cheap-module-eval-source-map --inline --mode development",
-    "build": "webpack --progress --color --devtool source-map --mode production"
+    "build": "webpack --progress --color --devtool source-map --mode production && npm run copy && rm -rf ./dist/js/*.js.map"
   },
   "repository": {
     "type": "git",
@@ -25,8 +26,8 @@
   "homepage": "https://github.com/FrendKao/create-react-app-sketch#readme",
   "dependencies": {
     "prop-types": "^15.7.2",
-    "react": "16.8.4",
-    "react-dom": "16.8.4",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
     "react-router-dom": "^5.0.0"
   },
   "devDependencies": {
