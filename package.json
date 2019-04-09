@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copy": "rm -rf ./sm-server/sources/** && cp ./dist/js/** ./sm-server/sources",
     "start": "webpack-dev-server --progress --color --devtool cheap-module-eval-source-map --inline --mode development",
-    "build": "webpack --progress --color --devtool source-map --mode production && npm run copy && rm -rf ./dist/js/*.js.map"
+    "build": "webpack --progress --color --devtool source-map --mode production"
   },
   "repository": {
     "type": "git",

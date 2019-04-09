@@ -4,83 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <script type="text/javascript">
-      (function() {
-        var ErrorType = {
-          CodeError: 1,
-          ResourceError: 2,
-          PromiseRejectionError: 3,
-          UnhandledRejectionError: 4,
-          NetworkError: 5
-        };
-
-        function report(error) {
-          error.projectId = 'PROJECT_ID';
-          error.reportedAt = new Date().toISOString();
-          var errorString = encodeURIComponent(JSON.stringify(error));
-          fetch('http://172.16.236.40:8809/api/report?error=' + errorString);
-        }
-
-        window.addEventListener('error', function(event) {
-          var myError;
-
-          if(event.constructor === ErrorEvent) {
-            // CodeError
-            myError = {
-              type: ErrorType.CodeError,
-              message: event.message,
-              filename: event.filename,
-              lineno: event.lineno,
-              colno: event.colno,
-              stack: event.error.stack
-            };
-          } else if(event.srcElement) {
-            // ResourceError
-            myError = {
-              type: ErrorType.ResourceError,
-              message: 'Error: resource loaded failed',
-              nodeName: event.srcElement.nodeName,
-              outerHTML: event.srcElement.outerHTML,
-              src: event.srcElement.src
-            };
-          }
-
-          if(myError) {
-            report(myError);
-          }
-          
-          return true;
-        }, true);
-
-        window.addEventListener('unhandledrejection', function(error) {
-          var myError;
-
-          if(error.reason && error.reason instanceof Error) {
-            myError = {
-              type: ErrorType.PromiseRejectionError,
-              message: error.reason.toString(),
-              stack: error.reason.stack
-            };
-          } else {
-            myError = {
-              type: ErrorType.UnhandledRejectionError,
-              message: 'Error: unhandled rejection',
-              reason: JSON.stringify(error.reason)
-            };
-          }
-
-          if(myError) {
-            report(myError);
-          }
-          
-          return true;
-        }, true);
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
-    <img src="http://dragon.img/a.jpg" />
-    <script src="http://dragon.script/a.js"></script>
   </body>
 </html>
